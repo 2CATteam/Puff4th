@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>Puff4th Control</title>
+	<link rel="stylesheet" type="text/css" href="./bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./main.css">
+	<script type="text/javascript" src="./bootstrap.js"></script>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="mainContainer">
+		<h3>Calibration:</h3>
+		<label for="volume">Measured volume of full extension:</label>
+		<div class="input-group">
+			<input type="number" id="volume" name="volume" min="0.05" max="10.0" step="any" class="form-control">
+			<span class="input-group-text">Liters</span>
+		</div>
+		<br>
+		<label for="fudge">Pre-delay (to allow flow to start):</label>
+		<div class="input-group">
+			<input type="number" id="fudge" name="fudge" min="0" max="3" step="any" class="form-control">
+			<span class="input-group-text">Seconds</span>
+		</div>
+		<label for="factor">Calibration Factor (constant flow rate multiplier):</label>
+		<div class="input-group">
+			<input type="number" id="factor" name="factor" min="0" max="3" step="any" class="form-control">
+		</div>
+		<br>
+		<button class="btn btn-primary" onclick="goToStart()">Go to start</button>
+		<button class="btn btn-secondary" onclick="goToEnd()">Go to end</button>
+		<button class="btn btn-danger" onclick="killRuns()">Stop running</button>
+		<hr>
+		<h3>Set Puff Volume:</h3>
+		<label for="count">Volume per puff:</label>
+		<div class="input-group">
+			<input type="number" id="runVolume" name="runVolume" class="form-control" min="0.05" max="3" step="any">
+			<span class="input-group-text">Liters</span>
+		</div>
+		<label for="count">Number of puffs:</label>
+		<div class="input-group">
+			<input type="number" id="count" name="count" class="form-control" min="1" step="1" >
+			<span class="input-group-text">Times</span>
+		</div>
+		<br>
+		<input type="radio" id="doSpeed" name="timeType" value="speed" class="form-check-input" checked>
+		<label for="doSpeed" class="form-check-label">Desired flow rate (LPM): OR</label>
+		<div class="input-group">
+			<input type="number" id="speed" name="speed" class="form-control">
+			<span class="input-group-text">Liters/minute</span>
+		</div>
+		<br>
+		<input type="radio" id="doTime" name="timeType" value="time" class="form-check-input">
+		<label for="doTime" class="form-check-label">Alternative: Puff duration (s)</label>
+		<div class="input-group">
+			<input type="number" id="timePer" name="timePer" class="form-control">
+			<span class="input-group-text">Seconds</span>
+		</div>
+		<br>
+		<label for="timePer">Puff cycle time:</label>
+		<div class="input-group">
+			<input type="number" id="timeBetween" name="timeBetween" class="form-control">
+			<span class="input-group-text">Seconds</span>
+		</div>
+		<label for="peakHold">Peak hold time:</label>
+		<div class="input-group">
+			<input type="number" id="peakHold" name="peakHold" class="form-control">
+			<span class="input-group-text">Seconds</span>
+		</div>
+		<button class="btn btn-primary" onclick="runFromVolume()">Run with these values</button>
+		<hr>
+		<h3>Run from CSV:</h3>
+		<input type="file" id="csvInput" accept=".csv" class="form-control">
+		<button class="btn btn-primary" onclick="runFromCSV()">Run from this CSV file</button>
+	</div>
+	<script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
